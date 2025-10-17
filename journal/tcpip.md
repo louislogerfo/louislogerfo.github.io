@@ -16,10 +16,10 @@ This is the originial input/data sent in binary
 
 This sections breaks data into sendable packets
 It will either send a TCP or a UDP
-TCP
+*** TCP
 - Makes sure information received is identical to information sent
 - Useful for Music, Video Games, important messages, videos, movies, etc
-UDP 
+*** UDP 
 
 - Doesn't require information to be identical
 - Useful for quick messages or non important tranfers of information
