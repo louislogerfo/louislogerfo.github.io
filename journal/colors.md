@@ -1,4 +1,4 @@
-![Here is the image i drew with my hand (Photo.jpg
+![Here is the image i drew with my hand] (Photo.jpg
 ![Here is the photo made in binary (ss.jpg
 Here is the binary need to make that photo is hexadecimal
 0A
