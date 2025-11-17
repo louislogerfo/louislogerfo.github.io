@@ -24,7 +24,7 @@ and the messages that you received.
 gzud xnt sqhdc knnjrlzwwwwhmf         have you tried looksmaxxxxing      25
 |                 |                 |     |
 |                 |                 |     |
-|                 |                 |     |
+`|                 |                 |     |
 
 
 ## Part 3: Connection to TCP/IP Model
@@ -42,7 +42,7 @@ This message is represented as a string of letters, numbers, and symbols. But we
 Select the first six characters from this message and copy them here: 5
 
 Using the ASCII table, convert these five characters to binary (if necessary,
-include leading zeroes so that each character is 8 bits): 101
+include leading zeroes so that each character is 8 bits): 01100101, 01011001, 01100111, 01000111, 01111000
 
 ### Transport Layer: Break your message into packets
 
@@ -54,21 +54,21 @@ Assume that each packet can hold two bytes. Fill in the packet information below
     Source: [Louis LoGerfo]
     Destination: [Aidan]  
     Sequence: 1/3
-    Data: [1]
+    Data: [01100101, 01011001]
     =========
     Packet 2:
 
     Source: [Louis LoGerfo]
     Destination: [Aidan]
     Sequence: 2/3 
-    Data: [0]
+    Data: [01100111, 01000111]
     =========
     Packet 3:
 
     Source: [Louis LoGerfo]
     Destination: [Aidan]
     Sequence: 3/3
-    Data: [1]
+    Data: [01111000]
     =========
 
 ## Part 4: Reflection Questions
