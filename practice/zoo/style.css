@@ -1,0 +1,8 @@
+table, tr, th td{
+	border: 3px blue dashed;
+	border-collapse: collapse;
+}
+
+body{
+	background-color: LemonChiffon;
+}
