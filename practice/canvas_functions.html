@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Canvas Functions</title>
+	</head>
+	<body>
+	<h1>Here are some functions</h1>
+	<canvas width=800 height=800 id="myCanvas")</canvas>
+	<script>
+	
+		const canvas = document.getElementById("mycanvas");
+		const ctx = canvas.getContext("2d");
+		ctx.fillRect(100,100,500,500)
+
+		function fillColoredCircle(x, y, r, color){
+			ctx.fillStyle = color;
+			ctx.beginPath();
+			ctx.arc(x, y, r, 0, 2*Math.PI)
+			ctx.fill()
+
+		fillColoredCricle(100,100,50"red");
+		fillColoredCricle(600,600,50, "#5321a3");
+
+	</script>
