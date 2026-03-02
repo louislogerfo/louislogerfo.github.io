@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <title>Circus parade</title>
+        </head>
+        <body>
+
+                <canvas id="myCanvas"
+                        width=800
+                        height=800>
+                </canvas>
+                <script>
+                        const canvas =  document
+                                .getElementById("myCanvas");
+                        const ctx = canvas.getContext("2d");
+                        let x = 1;
+                        let x2 = -400;
+                        let speed = 5;
+                        
+                        function background(px, py){
+
+                                        ctx.fillStyle = '#BD2A0D'
+                                        ctx.fillRect(0,0,80,800);       
+                                        ctx.fillRect(160, 0, 80, 800);
+                                        ctx.fillRect(320, 0, 80, 800);
+                                        ctx.fillRect(480, 0, 80, 800);
+                                        ctx.fillRect(640, 0 , 80, 800);
+                        }
+                        function drawSpade(px, py){
+                                        ctx.fillStyle = 'black';
+                                        ctx.beginPath();
+                                        ctx.moveTo(px,py);
+                                        ctx.lineTo(px - 20, py + 30);
+                                        ctx.lineTo(px + 20, py + 30);
+                                        ctx.closePath();
+                                        ctx.fill();
+                                        //other half
+                                        ctx.beginPath();
+                                        ctx.arc(px, py - 10, 13, 0, Math.PI *2);
+                                        ctx.fill();
+                                        //stem
+                                        ctx.fillRect(px - 5, py + 27, 10, 12);
+                        }
+                        function drawHeart(px, py){
+                                        ctx.fillStyle = 'red';
+                                        ctx.beginPath();
+                                        ctx.moveTo(px, py + 20);
+                                        ctx.bezierCurveTo(px - 30, py, px - 30, py -20, px, py - 10);
+                                        ctx.bezierCurveTo(px + 30, py - 20, px+ 30, py, px, py + 20);
+                                        ctx.fill();
+                        }
+                        function drawClub(px, py){
+                                        ctx.fillStyle = 'black';
+                                        // three circle make the clover
+                                        ctx.beginPath(); ctx.arc(px, py - 5, 10, 0, Math.PI * 2); ctx.fill();
+                                        ctx.beginPath(); ctx.arc(px - 12, py + 8, 10, 0, Math.PI * 2); ctx.fill();
+                                        ctx.beginPath(); ctx.arc(px + 12, py + 8, 10, 0, Math.PI * 2); ctx.fill();
+                                        // stem
+                                        ctx.fillRect(px - 5, py + 16, 10, 12);
+                        }
+                        function drawDiamond(px, py){
+                                        ctx.fillStyle = 'red';
+                                        ctx.beginPath();
+                                        ctx.moveTo(px,py - 25);
+                                        ctx.lineTo(px + 18,py);
+                                        ctx.lineTo(px, py + 25);
+                                        ctx.lineTo(px - 18, py);
+                                        ctx.closePath();
+                                        ctx.fill();
+                        }
+
+                        function animate(){
+                        x = x + speed;
+                        x2 = x2 + speed;
+
+
+                                if (x > 850) x = -50;
+                                if (x2 > 850) x2 = -50;
+                                x = x + speed;
+                        
+                                
+                        ctx.clearRect(0,0,800,800);
+                        background();
+                        
+                        drawSpade(x, 150);
+                        drawHeart(x2, 600);
+                        drawClub(x2,300);
+                        drawDiamond(x, 450);
+
+                        requestAnimationFrame(animate);
+                        
+                        }
+                        
+                        animate();
+                        
+                </script>
+        </body>
+</html>
+		<title>small story</title>
+	</head>
+	<body>
+		<canvas id"myCanvas"
+			width="1000"
+			height="1000">
+			</canvas>
+		<script>			
+                        const canvas = document.getElementById("myCanvas");
+                        const ctx = canvas.getContext("2d");
+			let posX = 50;
+                        let posY = 50;
+                        let speedX = 5;
+                        let speedY = 5;
+			let time = 0;
+
+			function drawBackground() {
+				ctx.fillStyle = "#4DA823";
+				ctx.fillRect(0,0, canvas.width, canvas.height);
+				ctx.fill();
+                       }
+
+                       
+
+                        drawBackground();
+
+		 </script>
+
+	</body>
+</html>
