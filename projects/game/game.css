@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #1e1e1e;
+    background-color: #ab5e05;
     font-family: 'Courier New', monospace;
     color: #f9f9f4;
     height: 100vh;
@@ -13,8 +13,8 @@ h1{
 }
 
 .location{
-    background-color:aqua;
-    color: black;
+    background-color:rgb(255, 204, 0);
+    color: #ab5e05;
     border-radius:5px;
 }
 
@@ -24,9 +24,9 @@ h1{
     flex-direction: column;
     max-width: 80%;
     margin: 0 auto;
-    border: 2px solid #00ff00;
+    border: 2px solid #000;
     padding: 20px;
-    background-color: #000;
+    background-color: ##ab5e05;
     overflow: hidden;
 }
 
@@ -43,12 +43,12 @@ h1{
 #input-line {
     display: flex;
     align-items: center;
-    border-top: 1px solid #00ff00;
+    border-top: 1px solid #000;
     padding-top: 10px;
 }
 
 .prompt {
-    color: #00ff00;
+    color: #000;
     margin-right: 10px;
     font-weight: bold;
 }
@@ -57,18 +57,18 @@ h1{
     flex: 1;
     background: transparent;
     border: none;
-    color: #00ff00;
+    color: #000;
     font-family: 'Courier New', monospace;
     font-size: 16px;
     outline: none;
 }
 
 #user-input::placeholder {
-    color: #008800;
+    color: #ffffff;
 }
 
 .ascii-art {
-    color: #00ff00;
+    color: #000;
     line-height: 1.2;
     font-size: 12px;
 }
