@@ -23,7 +23,7 @@
     function drawMap(){
         let map = ``;
     
-        if(gameStart && inHallway = true){
+        if(gameStart && inHallway == true){
             map += `
                          --------- 
                         | kitchen |
@@ -43,9 +43,9 @@
 
 
 
-        `                                  | ``
+                                          | `
        }
-        if(inKitchen = true){
+        if(inKitchen == true){
             map += `
                         --------
                        | Kitchen |
@@ -56,14 +56,14 @@
                        -----------      
                                `;
         }
-         if(inLiving = true){
+         if(inLiving == true){
             map += `
                          -----------    ------------
                          | Hallway | - | Living Room |
                          -----------    ------------
                                |`;
          }
-         if(inBedroom = true){
+         if(inBedroom == true){
             map += `
                            -----------    
                            | Hallway |
@@ -78,7 +78,7 @@
                             -----------    
                                `;
         }
-        if(inBathroom = true){
+        if(inBathroom == true){
             map += `
 
                             --------
@@ -90,6 +90,6 @@
                            -----------
                                `;
         }
-        console.log(map);
+      
         printAscii(map);
     }

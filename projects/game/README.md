@@ -1,0 +1,6 @@
+-find the key
+-player starts in the hallway
+-5 rooms
+-bookshelf in library with key locations
+-key is in bathroom
+-player cant leave the room until he finds the key
