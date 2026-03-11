@@ -3,8 +3,7 @@
     let bookshelfDiscovered = false;
 
 
-    let day = 0;
-    let minutes = 0;
+
 
 
     let gameActive = true;
@@ -24,7 +23,7 @@
     function drawMap(){
         let map = ``;
     
-        if(gameStart && inHallway = true){
+        if(gameStart && inHallway === true){
             map += `
                          --------- 
                         | kitchen |
@@ -44,9 +43,9 @@
 
 
 
-                                          | ;
-       ` `}`
-        if(inKitchen = true){
+        `                                  | ``
+       }
+        if(inKitchen === true){
             map += `
                         --------
                        | Kitchen |
@@ -56,13 +55,15 @@
                        | Hallway  |   
                        -----------      
                                `;
-        }else if(inLiving = true){
+        }
+         if(inLiving === true){
             map += `
                          -----------    ------------
                          | Hallway | - | Living Room |
                          -----------    ------------
                                |`;
-        }else if(inBedroom = true){
+         }
+         if(inBedroom === true){
             map += `
                            -----------    
                            | Hallway |
@@ -76,46 +77,19 @@
                             | Bathroom |
                             -----------    
                                `;
-        }else{
-            map += `
-                           -----------
-                           | Hallway |
-                           -----------
-                               |`;
         }
-        map += `
-                          -----------
-                          | Bedroom |
-                          -----------`;
-        
-        if(BathroomDiscovered && rm511Discovered && bathroomDiscovered){
+        if(inBathroom === true){
             map += `
-                               |
-            ---------    ------------    ------------
-            | rm511 |----| Portable |----| Bathroom |
-            ---------    ------------    ------------`
-        }else if(portableDiscovered && rm511Discovered){
-            map += `
-                               |
-            ---------    ------------
-            | rm511 |----| Portable |
-            ---------    ------------`
-    
-        }else if(portableDiscovered && bathroomDiscovered){
-            map += `
-                               |
-                         ------------    ------------
-                         | Portable |----| Bathroom |
-                         ------------    ------------`
-        }else if(portableDiscovered){
-            map += `
-                               |
-                         ------------
-                         | Portable |
-                         ------------`
+
+                            --------
+                           | Bedroom |
+                            --------
+                                |
+                           -----------
+                           | Bathroom |
+                           -----------
+                               `;
         }
-
-    function Hallway(){}
-
-    function Livingroom(){}
-    
+        console.log(map);
+        printAscii(map);
+    }
