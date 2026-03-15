@@ -5,22 +5,19 @@
 
     function start(){
         print("Welcome to find the key");
-        print("type anything to start..");
+        print("type start..");
         waitForInput(processInput);
-    }
 
-    function waitForInput(callback){
-        function handleKeyPress(event){
-            document.removeEventListener("keydown", handleKeyPress);
-            callback(event.key);
+        function processInput(input){
+            if (input.toLowerCase() === "start") {
+                Hallway();
         }
-        document.addEventListener("keydown", handleKeyPress);
     }
+}
 
-    function processInput(input){
-        Hallway();
+    
 
-    }
+  
     
     
 
@@ -33,20 +30,27 @@ function Hallway(){
     print("1. Door");
     print("2. Kitchen");
     print("3. Bedroom");
-    print("4. Living room");
+    print("4. Living");
 
     function processInput(input){
-        if (input == 1)
-        {
-            Kitchen()
-        }
-        else if (input == 2)
-        {
-        
-        }
+        if (input.toLowerCase() === "door") {
+            Door();
+        } else if (input.toLowerCase() === "kitchen") {
+            Kitchen();
+        } else if (input.toLowerCase() === "bedroom") {
+            Bedroom();
+        } else if (input.toLowerCase() === "living") {
+            Living();
+        } else {
+
     }
-    
+
+
+        waitForInput(processInput);
+    }
 }
+ 
+
 
 
 function Bedroom(){
@@ -62,4 +66,11 @@ function Living(){
 function Bathroom(){
     console.log("You are in the Bathroom");
 }
-
+function Door(){
+    if(keyDiscovered == false){
+        print("You do not have the key, go find it !");
+        Hallway();
+    }else{
+        ("You have escaped the house ")
+    }
+}

@@ -10,7 +10,7 @@
     let inHallway = true;
     let inKitchen = false;
     let inBedroom = false;
-    let keyDicovered = false;
+    let keyDiscovered = false;
     let inBathroom = false;
     let inLiving = false;
     let shelDiscovered = false;

@@ -1,5 +1,5 @@
 
-
+// This function prints text out to the terminal
 function print(text) {
     const output = document.getElementById('output');
     const line = document.createElement('div');
@@ -17,10 +17,6 @@ function printAscii(art) {
     const pre = document.createElement('pre');
     pre.className = 'ascii-art';
     pre.textContent = art;
-    pre.style.color = 'black';
-    pre.style.backgroundColor = 'transparent';
-    pre.style.whiteSpace = 'pre';
-    pre.style.margin = '0';
     output.appendChild(pre);
     output.scrollTop = output.scrollHeight;
 }
