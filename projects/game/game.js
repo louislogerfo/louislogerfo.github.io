@@ -30,31 +30,36 @@ function Hallway(){
     print("you are in the the hallway");
     print("there is nothing in the hallway!");
     print("which room would you like to go too");
-    print("1. Door")
-    print("2. Kitchen")
-    print("3. Bedroom")
-    print("4. Living room")
+    print("1. Door");
+    print("2. Kitchen");
+    print("3. Bedroom");
+    print("4. Living room");
 
     function processInput(input){
-        if (input == 1){
-        Kitchen()
+        if (input == 1)
+        {
+            Kitchen()
+        }
+        else if (input == 2)
+        {
+        
+        }
     }
     
-    }
 }
 
 
 function Bedroom(){
-    print("You are in the Bedroom")
+    console.log("You are in the Bedroom");
 }
 function Kitchen(){
-    print("You are in the Kitchen")
+    console.log("You are in the Kitchen");
 
 }
 function Living(){
-    print("You are in the Living room")
+    console.log("You are in the Living room");
 }
 function Bathroom(){
-    print("You are in the Bathroom")
+    console.log("You are in the Bathroom");
 }
 
