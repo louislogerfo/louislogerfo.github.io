@@ -61,3 +61,47 @@ function stayHere(){
     print("\nsorry, I don't understand your input. I'll assume you " +
         "want to stay here");
 }
+function goToBedroom(){
+    inHallway = false;
+    inKitchen = false;
+    inBedroom = true;
+    inBathroom = false;
+    inLiving = false;
+
+}
+
+function goToKitchen(){
+    inHallway = false;
+    inKitchen = true;
+    inBedroom = false;
+    inBathroom = false;
+    inLiving = false;
+
+}
+
+function goToHallway(){
+    inHallway = true;
+    inKitchen = false;
+    inBedroom = false;
+    inBathroom = false;
+    inLiving = false;
+
+}
+
+function goToBathroom(){
+    inHallway = false;
+    inKitchen = false;
+    inBedroom = false;
+    inBathroom = true;
+    inLiving = false;
+
+}
+
+function goToLiving(){
+    inHallway = false;
+    inKitchen = false;
+    inBedroom = false;
+    inBathroom = false;
+    inLiving = true;
+
+}
