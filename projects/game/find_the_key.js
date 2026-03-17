@@ -1,32 +1,34 @@
+// =========================
+// GLOBAL VARIABLES
+// =========================
+let gameActive = true;
+let gameStart = true;
 
-    let keyInHand = false;
-    let bookshelfDiscovered = false;
+let inHallway = true;
+let inKitchen = false;
+let inBedroom = false;
+let inBathroom = false;
+let inLiving = false;
+
+let bookshelfDiscovered = false;
+let boxDiscovered = false;
+let noteRead = false;
+let rugDiscovered = false;
+
+let keyInHand = false;
+let doorOpen = false;
 
 
+// =========================
+// MAP
+// =========================
+function drawMap() {
+    let map = ``;
 
-
-
-    let gameActive = true;
-    let inHallway = true;
-    let inKitchen = false;
-    let inBedroom = false;
-    let keyDiscovered = false;
-    let inBathroom = false;
-    let inLiving = false;
-    let shelDiscovered = false;
-    let boxDiscovered = false;
-    let doorOpen = false;
-    let gameStart = true;
-   
-    
-    
-    function drawMap(){
-        let map = ``;
-    
-        if(gameStart && inHallway == true){
-            map += `
-                         --------- 
-                        | kitchen |
+    if (inHallway) {
+        map += `
+                         ---------
+                        | Kitchen |
                          ---------
                              |   
             ------      -----------     -------------
@@ -39,171 +41,442 @@
                              |
                         -----------
                         | Bathroom |
-                        -----------
+                        -----------`;
+    }
 
-
-
-                                          | `
-       }
-        if(inKitchen == true){
-            map += `
-                        --------
-                       | Kitchen |
+    if (inKitchen) {
+        map += `
+                        ---------
+                        | Kitchen |
                         ---------
                             |
-                       -----------     
-                       | Hallway  |   
-                       -----------      
-                               `;
-        }
-         if(inLiving == true){
-            map += `
-                         -----------    ------------
-                         | Hallway | - | Living Room |
-                         -----------    ------------
-                               |`;
-         }
-         if(inBedroom == true){
-            map += `
-                           -----------    
+                       -----------
+                       | Hallway |
+                       -----------`;
+    }
+
+    if (inLiving) {
+        map += `
+                       -----------     -------------
+                      | Hallway  |  -  | Living room |
+                       -----------     -------------`;
+    }
+
+    if (inBedroom) {
+        map += `
+                           -----------
                            | Hallway |
-                           ----------- 
+                           -----------
                                 |
-                            -----------    
-                            | Bedroom  |
-                            -----------    
+                            -----------
+                            | Bedroom |
+                            -----------
                                 |
                             -----------
                             | Bathroom |
-                            -----------    
-                               `;
-        }
-        if(inBathroom == true){
-            map += `
+                            -----------`;
+    }
 
-                            --------
-                           | Bedroom |
-                            --------
+    if (inBathroom) {
+        map += `
+                            -----------
+                            | Bedroom |
+                            -----------
                                 |
-                           -----------
-                           | Bathroom |
-                           -----------
-                               `;
-        }
-      
-        printAscii(map);
+                            -----------
+                            | Bathroom |
+                            -----------`;
     }
-    function start(){
-        print("Welcome to find the key");
-        print("type start..");
-        waitForInput(processInput);
 
-        function processInput(input){
-            if (input.toLowerCase() === "start") {
-                Hallway();
-        }
-    }
+    printAscii(map);
 }
 
-    
 
-  
-    
-    
-
-function Hallway(){
-   clear();
+// =========================
+// HELPERS
+// =========================
+// =========================
+// START
+// =========================
+function start() {
+    clear();
+    goToHallway();
+    print("You wake up inside a strange house.");
+    print("You are standing in the hallway.");
+    print("Find the key and unlock the front door.");
     drawMap();
-    print("you are in the the hallway");
-    print("there is nothing in the hallway!");
-    print("which room would you like to go too");
-    print("1. Door");
-    print("2. Kitchen");
-    print("3. Bedroom");
-    print("4. Living");
 
-    function processInput(input){
-        input = input.toLowerCase
+    print("\nWhere would you like to go?");
+    print("kitchen");
+    print("living room");
+    print("bedroom");
+    print("door");
 
-        if (input.toLowerCase() === "door") {
-            Door();
-        } else if (input.toLowerCase() === "kitchen") {
-            Kitchen();
-        } else if (input.toLowerCase() === "bedroom") {
-            Bedroom();
-        } else if (input.toLowerCase() === "living") {
-            Living();
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "kitchen") {
+            kitchen();
+        } else if (input === "living room" || input === "living") {
+            livingRoom();
+        } else if (input === "bedroom") {
+            bedroom();
+        } else if (input === "door") {
+            frontDoor();
         } else {
-        stayHere();
-        waitThenCall(hallway);
+            stayHere();
+            waitThenCall(start);
+        }
     }
 
-    }
     waitForInput(processInput);
 }
- 
 
 
+// =========================
+// HALLWAY
+// =========================
+function hallway() {
+    clear();
+    goToHallway();
+    drawMap();
 
-function Bedroom(){
-    
-        clear();
-        goToBedroom();
-         drawMap();
-         print("you are in the the bedroom");
-         print("There is an unmade bed and a doorway to the bathroom.");
-         print("What would you like to do?");
-         print("Bathroom");
-         print("search bed");
-         print("hallway");
-         
-     
-         function processInput(input){
-             input = input.toLowerCase
-     
-             if (input.toLowerCase() === "search bed") {
-                 print("You search the bed.")
-                 print("Only find dusty blankets and a torn pillow")
-                 print("Type Bathroom or Hallway")
-                 waitForInput(function(nextInput){
-                    nextInput = nextInput.toLowerCase();
-                    if(nextInput === "bathroom") {
-                        bathroom();
-                    }
-                 } else if (nextInput === "hallway"){
+    print("\nYou are in the hallway.");
+    print("The front door is locked.");
+    print("\nWhere would you like to go?");
+    print("kitchen");
+    print("living room");
+    print("bedroom");
+    print("door");
+
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "kitchen") {
+            kitchen();
+        } else if (input === "living room" || input === "living") {
+            livingRoom();
+        } else if (input === "bedroom") {
+            bedroom();
+        } else if (input === "door") {
+            frontDoor();
+        } else {
+            stayHere();
+            waitThenCall(hallway);
+        }
+    }
+
+    waitForInput(processInput);
+}
+
+
+// =========================
+// KITCHEN
+// =========================
+function kitchen() {
+    clear();
+    goToKitchen();
+    drawMap();
+
+    print("\nYou are in the kitchen.");
+    print("There are dusty cabinets and an empty sink.");
+    print("Nothing here seems useful.");
+
+    print("\nWhat would you like to do?");
+    print("search cabinets");
+    print("hallway");
+
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "search cabinets") {
+            print("\nYou search the cabinets.");
+            print("There are chipped plates and stale crackers, but no key.");
+            print("\nType hallway to go back.");
+            waitForInput(function(nextInput) {
+                if (nextInput.toLowerCase() === "hallway") {
                     hallway();
-                 } else {
+                } else {
+                    stayHere();
+                    waitThenCall(kitchen);
+                }
+            });
+        } else if (input === "hallway") {
+            hallway();
+        } else {
+            stayHere();
+            waitThenCall(kitchen);
+        }
+    }
+
+    waitForInput(processInput);
+}
+
+
+// =========================
+// LIVING ROOM
+// =========================
+function livingRoom() {
+    clear();
+    goToLiving();
+    drawMap();
+
+    print("\nYou are in the living room.");
+    print("There is an old couch and a tall bookshelf.");
+
+    if (!bookshelfDiscovered) {
+        print("\nWhat would you like to do?");
+        print("inspect bookshelf");
+        print("hallway");
+    } else if (!boxDiscovered) {
+        print("\nWhat would you like to do?");
+        print("inspect bookshelf");
+        print("hallway");
+    } else if (!noteRead) {
+        print("\nWhat would you like to do?");
+        print("open box");
+        print("hallway");
+    } else {
+        print("\nWhat would you like to do?");
+        print("inspect bookshelf");
+        print("hallway");
+    }
+
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "inspect bookshelf") {
+            if (!bookshelfDiscovered) {
+                bookshelfDiscovered = true;
+                print("\nYou inspect the bookshelf.");
+                print("Behind a row of books, you find a small box.");
+                boxDiscovered = true;
+                print("\nType open box or hallway.");
+            } else if (boxDiscovered && !noteRead) {
+                print("\nThe small box is still there on the bookshelf.");
+                print("\nType open box or hallway.");
+            } else {
+                print("\nYou already searched the bookshelf.");
+                print("There is nothing else useful there.");
+                print("\nType hallway.");
+            }
+
+            waitForInput(function(nextInput) {
+                nextInput = nextInput.toLowerCase();
+
+                if (nextInput === "open box") {
+                    openBox();
+                } else if (nextInput === "hallway") {
+                    hallway();
+                } else {
+                    stayHere();
+                    waitThenCall(livingRoom);
+                }
+            });
+
+        } else if (input === "open box") {
+            openBox();
+        } else if (input === "hallway") {
+            hallway();
+        } else {
+            stayHere();
+            waitThenCall(livingRoom);
+        }
+    }
+
+    waitForInput(processInput);
+}
+
+function openBox() {
+    clear();
+    goToLiving();
+    drawMap();
+
+    if (!boxDiscovered) {
+        print("\nThere is no box here.");
+        print("\nType hallway.");
+        waitForInput(function(input) {
+            if (input.toLowerCase() === "hallway") {
+                hallway();
+            } else {
+                stayHere();
+                waitThenCall(livingRoom);
+            }
+        });
+        return;
+    }
+
+    if (!noteRead) {
+        noteRead = true;
+        print("\nYou open the box.");
+        print("Inside is a folded note.");
+        print('\nThe note says: "The key is in the bathroom, under the rug."');
+        print("\nNow you know where to look.");
+        print("\nType hallway or bedroom.");
+    } else {
+        print("\nThe box is empty except for the note.");
+        print('\nIt still says: "The key is in the bathroom, under the rug."');
+        print("\nType hallway or bedroom.");
+    }
+
+    waitForInput(function(input) {
+        input = input.toLowerCase();
+
+        if (input === "hallway") {
+            hallway();
+        } else if (input === "bedroom") {
+            bedroom();
+        } else {
+            stayHere();
+            waitThenCall(livingRoom);
+        }
+    });
+}
+
+
+// =========================
+// BEDROOM
+// =========================
+function bedroom() {
+    clear();
+    goToBedroom();
+    drawMap();
+
+    print("\nYou are in the bedroom.");
+    print("There is an unmade bed and a doorway to the bathroom.");
+
+    print("\nWhat would you like to do?");
+    print("bathroom");
+    print("search bed");
+    print("hallway");
+
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "bathroom") {
+            bathroom();
+        } else if (input === "search bed") {
+            print("\nYou search the bed.");
+            print("Only dusty blankets and a broken pillow.");
+            print("\nType bathroom or hallway.");
+            waitForInput(function(nextInput) {
+                nextInput = nextInput.toLowerCase();
+
+                if (nextInput === "bathroom") {
+                    bathroom();
+                } else if (nextInput === "hallway") {
+                    hallway();
+                } else {
                     stayHere();
                     waitThenCall(bedroom);
-                
-                 });
-             } else if (input.toLowerCase() === "hallway") {
-                 hallway();
-             } else {
-             stayHere();
-             waitThenCall(bedroom);
-         }
-     
-         }
-         waitForInput(processInput);
-     }
-
-
-function Kitchen(){
-    console.log("You are in the Kitchen");
-
-}
-function Living(){
-    console.log("You are in the Living room");
-}
-function Bathroom(){
-    console.log("You are in the Bathroom");
-}
-function Door(){
-    if(keyDiscovered == false){
-        print("You do not have the key, go find it !");
-        Hallway();
-    }else{
-        ("You have escaped the house ")
+                }
+            });
+        } else if (input === "hallway") {
+            hallway();
+        } else {
+            stayHere();
+            waitThenCall(bedroom);
+        }
     }
+
+    waitForInput(processInput);
 }
+
+
+// =========================
+// BATHROOM
+// =========================
+function bathroom() {
+    clear();
+    goToBathroom();
+    drawMap();
+
+    print("\nYou are in the bathroom.");
+    print("There is a sink, a cracked mirror, and a small rug on the floor.");
+
+    if (!keyInHand) {
+        print("\nWhat would you like to do?");
+        print("look under rug");
+        print("look mirror");
+        print("bedroom");
+    } else {
+        print("\nWhat would you like to do?");
+        print("look mirror");
+        print("bedroom");
+    }
+
+    function processInput(input) {
+        input = input.toLowerCase();
+
+        if (input === "look under rug" && !keyInHand) {
+            print("\nYou lift the rug.");
+            print("There is a small metal key underneath.");
+            print("You pick up the key.");
+            keyInHand = true;
+            rugDiscovered = true;
+            print("\nType bedroom to go back.");
+            waitForInput(function(nextInput) {
+                if (nextInput.toLowerCase() === "bedroom") {
+                    bedroom();
+                } else {
+                    stayHere();
+                    waitThenCall(bathroom);
+                }
+            });
+        } else if (input === "look mirror") {
+            print("\nYour reflection stares back at you.");
+            print("You look tired, but at least you're getting closer.");
+            print("\nType bedroom.");
+            waitForInput(function(nextInput) {
+                if (nextInput.toLowerCase() === "bedroom") {
+                    bedroom();
+                } else {
+                    stayHere();
+                    waitThenCall(bathroom);
+                }
+            });
+        } else if (input === "bedroom") {
+            bedroom();
+        } else {
+            stayHere();
+            waitThenCall(bathroom);
+        }
+    }
+
+    waitForInput(processInput);
+}
+
+
+// =========================
+// DOOR
+// =========================
+function frontDoor() {
+    clear();
+    goToHallway();
+    drawMap();
+
+    print("\nYou stand in front of the door.");
+
+    if (!keyInHand) {
+        print("It is locked.");
+        print("You need to find the key first.");
+        print("\nType hallway.");
+        waitForInput(function(input) {
+            if (input.toLowerCase() === "hallway") {
+                hallway();
+            } else {
+                stayHere();
+                waitThenCall(frontDoor);
+            }
+        });
+        return;
+    }
+
+    print("You Win.");
+}
+
+
+// =========================
+// BEGIN GAME
+// =========================
+start();
