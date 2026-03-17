@@ -6,12 +6,13 @@
 graph TD;
     Door(((Door)))<-->Hallway;
     Hallway<-->Livingroom;
+    Hallway<-->Kitchen;
     Hallway<-->Bedroom;
     Bedroom<-->Bathroom; 
 ```
 
 # Story
-- You wake up, you have no idea where you are. You are in a old house, you tyr leaving but you don't have the key. Good luck finding it
+- You wake up, you have no idea where you are. You are in a old house, you try leaving but you don't have the key. Good luck finding it
 
 # Global Variables
 - The most important variables are listed below
